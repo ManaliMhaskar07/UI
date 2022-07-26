@@ -44,7 +44,7 @@
     box-shadow:0 2px 5px rgba(0,0,0,0,2);
 }
 .container{
-    
+    text-align: center;
     content: center;
     margin: auto;
     position: center;
@@ -69,11 +69,13 @@ label
 }
 
 .card{
+    text-align: left;
     justify-content: center;
+    border-radius: 5px;
     margin: auto;
- text-align: left;
- background-color: black;
- color: white;
- width: 50%;
- box-shadow: 2px 2px 10px black;
+    top: 0;
+    text-align: center;
+    width: 50%;
+    background-color:transparent;
+    font-weight: bold;
 }

@@ -6,7 +6,7 @@
     }
     header{
         width: 100%;
-        height: 100vh;
+        height: 200vh;
         background-repeat: no-repeat;
         background-image:url('src\assets\images\neew.jpg');
         font-weight: bold;
@@ -81,33 +81,78 @@
 }
 .table-trapped{
     border-collapse: collapse;
-    background-color: white;
+    background-color: transparent;
     margin:25px 0;
     font-size: 0.9em;
     min-width:100%;
 }
 
 .table-trapped thead tr{
-    background-color: white;
+    background-color: transparent;
     text-align: left;
     font-weight: bold;
+    font-size: large;
 }
 
 .table-trapped th, .table-trapped tr{
     padding: 12px 15px;
+    text-align: center;
 }
 
 .table-trapped tbody tr{
-    background-color: gray;
+    background-color: transparent;
     border-bottom: 1px solid #ffffff;
+    font-size: larger;
+    text-align: center;
+        
+    
     
 }
 
 td
 {
     height:40px;
+    
 }
 
 .table-trapped tbody td{
     border-bottom: 1px solid #f3f3f3;
+    
+}
+
+main{
+    width:100%;
+    height:85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+}
+
+
+section h3{
+    font-size: 35px;
+    font-weight:200 ;
+    letter-spacing: 3px;
+    text-shadow: 1px 1px 2px black;
+    font-weight: bold;
+    color: white;
+}
+
+section h1{
+    margin:30px 0 20px 0;
+    font-size: 55px;
+    
+    text-shadow: 2px 1px 5px black;
+    text-transform: uppercase;
+    color: white;
+}
+section p{
+    font-size: 25px;
+    word-spacing: 2px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 1px black;
+    color: white;
 }

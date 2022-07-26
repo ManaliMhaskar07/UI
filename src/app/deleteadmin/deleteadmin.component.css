@@ -6,7 +6,7 @@ div{
     font-weight:200 ;
     letter-spacing: 3px;
     text-shadow: 1px 1px 2px white;
-    color: white;
+    color: black;
   
 }
 h2{
@@ -24,8 +24,7 @@ h2{
     top: 0;
     text-align: center;
     width: 50%;
-    box-shadow: 2px 2px 10px black;
-    background-color: black;
+    background-color:transparent;
 }
 
 .btn

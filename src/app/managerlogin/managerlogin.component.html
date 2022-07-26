@@ -1,17 +1,19 @@
 <link 
 href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" 
 rel="stylesheet"  type='text/css'>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200&display=swap" rel="stylesheet">
 <header>
 <nav>
-<div class="logo"><h1>Welcome  {{username}}</h1></div>
+<div class="logo"><h1>Welcome {{username}} !</h1></div>
 <div class="menu">
-<a href="#" routerLink="/" (click)="ndisp()">Home</a>
+<a href="#" routerLink="/manager" (click)="ndisp()">Home</a>
   <a href="#" routerLink="/manager" (click)="trq()">Travel Request</a>
 <a href="#" routerLink="/manager" (click)="vtrq()">View your Request</a>
   <a href="#" routerLink="/Createreq" *ngIf="display">Raise Request</a>
-  <a href="#" routerLink="/">Logout</a>
+  <a href="#" routerLink="/" >Logout</a>
 </div>
   </nav>
+ 
 <div class="container">
     <table class="table table-trapped" *ngIf="display" >
      <thead>
@@ -21,8 +23,7 @@ rel="stylesheet"  type='text/css'>
          <th>DATE OF TRAVEL</th>
          <th>MODE OF TRAVEL</th>
          <th>STATUS</th>
-         <th>DETAILS</th>
-         <th>EDIT</th>
+         
        </tr> 
      </thead>
      
@@ -30,15 +31,14 @@ rel="stylesheet"  type='text/css'>
         <tr *ngFor="let f of selfmember" >
        
        
-         
-       
        <td>{{f.source}}</td>
        <td>{{f.destination}}</td>
        <td>{{f.travelDate.split("T")[0]}} {{f.travelDate.split("T")[1]}}</td>
        <td>{{f.travelMode}}</td>
        <td>{{f.currentStatus}}</td>
-        <td><button class="btn"  (click)="detailchk(f)"><i class="fa fa-file-text"></i></button></td>
-       <td><button *ngIf="f.currentStatus=='SUBMITTED'" (click)="editchk(f)"><i class="fa fa-pencil "></i></button></td>
+       <td> <a href="#" routerLink="/Details"  (click)="detailchk(f)"><i class="fa fa-file-text"></i></a></td>
+        <td><a href="#" routerLink="/delete"  (click)="deletechk(f)"><i class="fa fa-trash"></i></a></td>
+        
     
     
      </tr>
@@ -62,32 +62,16 @@ rel="stylesheet"  type='text/css'>
     <tr *ngFor="let q of member" >
       
       
-     
-      
        <td>{{q.source}}</td>
       <td>{{q.destination}}</td>
       <td>{{q.travelDate.split("T")[0]}} {{q.travelDate.split("T")[1]}}</td>
       <td>{{q.travelMode}}</td>
       <td>{{q.currentStatus}}</td>
-       <button  (click)="detailchk(q)">Details</button>
-       <button *ngIf="q.currentStatus=='SUBMITTED'" (click)="editchk(q)">Edit</button>
-     
-   
+       <td><a href="#" routerLink="/Details" (click)="detailchk(q)"><i class="fa fa-file-text"></i></a></td>
+       <td><a href="#" routerLink="/edit" *ngIf="q.currentStatus=='SUBMITTED'" (click)="editchk(q)"><i class="fa fa-pencil"></i></a></td>
+       
+       
     </tr>
-   
     </tbody>
     </table>
- 
-    
-
-
-
-
-
-
-
-
-
-    
-   
  </div> 
