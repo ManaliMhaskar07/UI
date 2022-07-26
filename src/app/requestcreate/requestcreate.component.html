@@ -1,0 +1,36 @@
+<header>
+
+  <form  #userlogin = "ngForm">
+      <div class="container">
+  
+       <br>
+        <h1>Raise Request</h1>
+        
+        <hr>
+        <br>
+    
+        <label for="source"><b>Source : </b></label>
+        <input type="text" placeholder="Enter source" name="source" id="source" required ngModel><br>
+    <br>
+        <label for="destination"><b>Destination :</b></label>
+        <input type="text" placeholder="Enter destination" name="destination" id="destination" required ngModel><br>
+    <br>
+        <label for="traveldate"><b>Travel Date : </b></label>
+        <input type="datetime-local" placeholder="travel date" name="traveldate" id="travel date" required ngModel><br>
+         <br>
+        <label for="mode"><b>Travel Mode :</b> </label>
+        <select name="mode" id="mode" ngModel>
+          <option value="Flight">Flight</option>
+          <option value="Train">Train</option>
+          <option value="Bus">Bus</option>
+          <option value="Car">Car</option>
+        </select> 
+        
+        <br><br>
+    
+        
+        <button type="button" class="createbtn" (click)="chkclick(userlogin.value)">Create</button>
+      </div>
+    
+      
+    </form>

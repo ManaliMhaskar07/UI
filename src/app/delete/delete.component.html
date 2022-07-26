@@ -1,0 +1,36 @@
+<header>
+    <link 
+      href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" 
+      rel="stylesheet"  type='text/css'>
+      <div class="new">
+    <br>
+ 
+    
+    
+    <h2>Are You Sure You Want To Delete The Request ?</h2>
+    <br>
+        <br>
+        <div class="card">
+    <div >
+        
+    <br>
+        SOURCE : {{empdetail.source}}<br><br>
+        DESTINATION : {{empdetail.destination}}<br><br>
+        USER ID : {{usrname}}<br><br>
+        DATE OF TRAVEL : {{empdetail.travelDate.split("T")[0]}} AT {{empdetail.travelDate.split("T")[1]}}<br><br>
+        MODE OF TRAVEL : {{empdetail.travelMode}}<br><br>
+        STATUS : {{empdetail.currentStatus}}<br><br>
+        <button class="btn" (click)="chkdelete()"><i class="fa fa-trash"></i></button>
+      
+    </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    
+    <div>
+        <nav>
+            <a href="#" routerLink="/login">Back To List</a>
+        </nav>
+    </div>
+    </div>

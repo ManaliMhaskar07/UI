@@ -1,0 +1,54 @@
+<header>
+  <br>
+  <br>
+  <p>Update The Current Details .</p>
+  <form #edit="ngForm">
+  <br>
+  <br>
+  
+  
+  <div class="card">
+  <div>
+    <br>
+ 
+      SOURCE : {{empdetail.source}}<br><br>
+      DESTINATION : {{empdetail.destination}}<br><br>
+      USER ID : {{usrname}}<br><br>
+      DATE OF TRAVEL : {{empdetail.travelDate.split("T")[0]}} AT {{empdetail.travelDate.split("T")[1]}}<br><br>
+      MODE OF TRAVEL : {{empdetail.travelMode}}<br><br>
+      STATUS :
+      <select *ngIf="usrid=='MANAGER'" name="status" id="status" ngModel>
+          <option name="approved" value="APPROVED">Approved By Manager</option>
+          <option name="rejected" value="REJECTED">Rejected By Manager</option>
+          
+        
+        {{empdetail.currentStatus}}</select><br><br>
+  
+        <select *ngIf="usrid=='TRAVEL_AGENT'" name="status" id="status" ngModel>
+          <option name="Booking Confirmed" value="Booking Confirmed">Booking Confirmed</option>
+          <option name="Booking Not Available" value="Booking Not Available">Booking Not Available</option>
+          
+        
+        {{empdetail.currentStatus}}</select><br><br>
+  
+        <select *ngIf="usrid=='ADMIN'" name="status" id="status" ngModel>
+          <option name="approved" value="APPROVED">Approved By Manager</option>
+          <option name="rejected" value="REJECTED">Rejected By Manager</option>
+          <option name="Booking Confirmed" value="Booking Confirmed">Booking Confirmed</option>
+          <option name="Booking Not Available" value="Booking Not Available">Booking Not Available</option>
+          
+        {{empdetail.currentStatus}}</select>
+
+      <a href="#" (click)="updatechk(edit.value)">Update</a><br><br>
+      </div>
+      </div>
+      <div>
+      <nav>
+        <br>
+          <a href="#" (click)="route()">Back to list</a>
+      </nav>
+  </div>
+  
+  </form>
+  
+  

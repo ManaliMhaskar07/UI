@@ -1,0 +1,49 @@
+<link 
+  href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" 
+  rel="stylesheet"  type='text/css'>
+<header>
+  <nav>
+    <div class="logo"><h1 class="">Welcome  {{username}}</h1></div>
+
+<div class="menu">
+<!--a href="#"  routerLink="/admin"  (click)="toggledisplay()"> Travel Request </a-->
+<a href="#"  routerLink="/admin"  (click)="trq()"> Travel Request </a>
+
+<a href="#" routerLink="/register"  (click)="adduser()">Add User</a>
+<a href="#" routerLink="/modify" (click)="modifyuser()">Modify User</a>
+<a href="#" (click)="logout()">Logout</a>
+
+</div>
+</nav>
+
+<table class="table-trapped" *ngIf="display">
+ 
+    <thead>
+      <tr>
+        <th>Requested by</th>
+        <th>Source</th>
+        <th>Destination</th>
+        <th>Travel Date</th>
+        <th>Mode</th>
+        <th>Current Request Status</th>
+      </tr> 
+
+
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let f of members">
+            <td>{{f.name}}</td>
+            <td>{{f.source}}</td>
+            <td>{{f.destination}}</td>
+            <td>{{f.travelDate.split("T")[0]}} {{f.travelDate.split("T")[1]}}</td>
+            <td>{{f.travelMode}}</td>
+            <!-- <td>{{f.currentStatus}}</td> -->
+            <button (click)="editchk(f)">Edit</button>
+            <button (click)="deletechk(f)">Delete</button>
+            <button (click)="detailchk(f)">Details</button>
+        </tr>
+    </tbody>
+</table>
+
+  

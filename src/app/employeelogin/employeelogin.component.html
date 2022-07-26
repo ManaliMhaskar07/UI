@@ -1,0 +1,178 @@
+<link 
+  href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" 
+  rel="stylesheet"  type='text/css'>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" charset="utf-8"></script>
+<header>
+  <nav>
+      <div class="logo"><h1 class="">Welcome  {{username}}</h1></div>
+
+
+<div class="menu">
+
+<a href="#" routerLink="/" (click)="ndisp()">Home</a>
+<a href="#" routerLink="/employee" (click)="trq()">Travel Request</a>
+<a href="#" routerLink="/Createreq" *ngIf="display">Raise Request</a>
+<a href="#" routerLink="/Auth">Logout</a >
+
+</div>
+</nav>
+
+<div class="container">
+    <table class="table table-trapped" *ngIf="display">
+     <thead>
+       <tr>
+         <th>SOURCE</th>
+         <th>DESTINATION</th>
+         <th>TRAVEL DATE</th>
+         <th>MODE</th>
+         <th>STATUS</th>
+         <th>DETAILS</th>
+         <th>DELETE</th>
+       </tr> 
+     </thead>
+     
+     <tbody>
+       
+     <tr *ngFor="let f of member">
+       
+       
+         
+       
+       <td>{{f.source}}</td>
+       <td>{{f.destination}}</td>
+       <td>{{f.travelDate.split("T")[0]}} {{f.travelDate.split("T")[1]}}</td>
+       <td>{{f.travelMode}}</td>
+       <td>{{f.currentStatus}}</td>
+       <td>
+        <a href="#" routerLink="/Details" (click)="detailchk(f)"><i class="fa fa-file-text "></i></a>
+        </td>
+        
+        <td>
+        <a href="#" routerLink="/delete" (click)="deletechk(f)"><i class="fa fa-trash"></i></a>
+       </td>
+       
+     </tr>
+     </tbody>
+    </table>
+   </div> 
+
+
+
+
+
+<!--tbody>
+   <tr *ngFor="let f of member">
+   <div class="card">
+    <div class="card-title">
+     
+      <h4>{{ f.source }} to {{ f.destination }}</h4>
+    </div>
+    <div class="card-body">
+      <div class="body-top">
+        <p>Raised by: {{ f.name }}, {{ f.loginId }}</p>
+  
+        <p>Travel Date: {{ f.travelDate | date }}</p>
+  
+        <p>Travel Mode: {{ f.travelMode }}</p>
+      </div>
+      <div class="body-bottom">
+        <p>Request Status : {{ f.currentStatus }}</p>
+
+        <button class="btn" (click)="detailchk(f)">
+          <i class="fa fa-file-text"></i>
+        </button>
+        
+        <button class="btn" (click)="deletechk(f)">
+          <i class="fa fa-trash"></i>
+        </button>
+        
+        
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  </tr>
+  </tbody>
+  <div class="pagination">
+    <li class="page-item previous-page disable"><a class="page-link" href="#">Prev</a></li>
+    <li class="page-item current-page active"><a class="page-link" href="#">1</a></li>
+    <li class="page-item current-page"><a class="page-link" href="#">2</a></li>
+    
+    <li class="page-item dots"><a class="page-link" href="#">..</a></li>
+    <li class="page-item current-page"><a class="page-link" href="#">6</a></li>
+    <li class="page-item current-page"><a class="page-link" href="#">7</a></li>
+    <li class="page-item dots"><a class="page-link" href="#">..</a></li>
+    <li class="page-item current-page"><a class="page-link" href="#">10</a></li>
+    <li class="page-item next-page"><a class="page-link" href="#">Next</a></li>
+  </div>
+ 
+  <script type="text/javascript">
+    function getPageList(totalPages,page,macLength){
+      function range(start,end){
+        return Array.from(Array(end-start +1), (_, i) => i + start);
+
+      }
+      var sideWidth = maxLength < 9 ? 1 : 2;
+      var leftWidth = (maxLength - sideWidth * 2 - 3) >> 1;  
+      var rightWidth = (maxLength - sideWidth * 2 - 3) >> 1; 
+
+      if(totalPages <= maxLength){
+        return range(1, totalPages)  
+          }
+
+          if(page <= maxLength - sideWidth - 1 - rightWidth) {
+            return range(1, maxLength - sideWidth).concat(0, range(totalPages - sideWidth + 1,totalPages));
+          }
+
+          if(page >= totalPages - sideWidth - 1 - rightWidth){
+            return range(1, sideWidth).concat(0, range(totalPages- sideWidth - 1 - rightWidth - leftWidth,totalPages));
+          }
+          return range(1, sideWidth).concat(0, range(page - leftWidth,page + rightWidth), 0 ,range(totalPages - sideWidth + 1,totalPages));
+    }
+
+    $(function(){
+      var numberOfitems = $(".card").length;
+    var limitPerPage = 3;
+    var totalPages=Math.ceil(numberOfitems / limitPerPage);
+    var paginationSize=7;
+    var currentPage;
+
+    function showPage(whichPage){
+      if(whichPage < 1 || whichPage > totalPages)return false;
+
+      currentPage = whichPage;
+
+      $(".card").hide().slice((currentPage - 1) * limitPerPage,currentPage*limitPerPage).show();
+
+      $(".pagination li").slice(1,-1).remove();
+
+      getPageList(totalPages,currentPage,paginationSize).forEach(item => {
+
+        $("<li>").addClass("page-item").addClass(item ? "current-page" : "dots")
+          .toggleClass("active", item === currentPage).append($<"<a>").addClass("page-link")
+            .attr({href : " javascript:void(0)"}).text(item || "...").insertBefore(".nextPage");    
+    });
+
+    $(".previous-page").toggleClass("disable",currentPage === 1);
+    $(".next-page").toggleClass("disable",currentPage === totalPages);
+    return true;
+  }
+  $(".pagination").append(
+    $("<li>").addClass("page=item"),addClass("previous-page").append($("<a>")).addClass("page-link")).attr({href: "javascript:void(0)"});
+
+      $(".card").show();
+      showPage(1);
+
+      $(document).on("click",".pagination li.current-page:not(.active)",function(){
+        return showPage(+$(this).text());
+
+      });
+      $("next-page").on("click",function(){
+        return showPage(currentPage + 1);
+      });
+      
+    });
+  </script-->
+  
